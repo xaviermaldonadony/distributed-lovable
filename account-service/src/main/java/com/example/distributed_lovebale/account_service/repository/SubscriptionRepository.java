@@ -1,7 +1,7 @@
 package com.example.distributed_lovebale.account_service.repository;
 
 import com.example.distributed_lovable.common_lib.enums.SubscriptionStatus;
-import com.stripe.model.Subscription;
+import com.example.distributed_lovebale.account_service.entity.Subscription;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

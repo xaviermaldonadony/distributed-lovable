@@ -5,7 +5,12 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Set;
 
-import static com.example.projects.lovable_clone.enums.ProjectPermission.*;
+import static com.example.distributed_lovable.common_lib.enums.ProjectPermission.DELETE;
+import static com.example.distributed_lovable.common_lib.enums.ProjectPermission.EDIT;
+import static com.example.distributed_lovable.common_lib.enums.ProjectPermission.MANAGE_MEMBERS;
+import static com.example.distributed_lovable.common_lib.enums.ProjectPermission.VIEW;
+import static com.example.distributed_lovable.common_lib.enums.ProjectPermission.VIEW_MEMBERS;
+
 
 @RequiredArgsConstructor
 @Getter

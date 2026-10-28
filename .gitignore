@@ -55,6 +55,14 @@ application-local.properties
 *.jks
 *.p12
 
+# Service configs may contain credentials; commit .example files instead
+application.yaml
+application.yml
+
+# Personal scratch notes
+prog.txt
+prog.text
+
 # ---------------------------------------------------------------------------
 # OS / tooling noise
 # ---------------------------------------------------------------------------
