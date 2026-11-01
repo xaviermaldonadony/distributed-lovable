@@ -7,6 +7,15 @@
 - Read-only investigation is always fine.
 - After approval, make only the agreed changes.
 
+### What counts as confirmation
+
+- A request to fix, debug, or investigate something is NOT confirmation to change files.
+  It authorizes read-only investigation and a proposed change only.
+- Show the exact diff (or the full new file for new files), then stop and wait.
+- Apply only after an explicit go-ahead: "apply", "go ahead", "yes", "commit it".
+- One approval covers one change set. Do not reuse it for later edits.
+- If the change would differ from what was approved, stop and re-confirm.
+
 ## Communication
 
 - Be concise: short answers, bullets, no filler, no restating the request.

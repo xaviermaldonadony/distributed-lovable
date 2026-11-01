@@ -1,6 +1,7 @@
 package com.example.distributed_lovebale.workspace_service.service.impl;
 
 import com.example.distributed_lovable.common_lib.dto.PlanDto;
+import com.example.distributed_lovable.common_lib.enums.ProjectPermission;
 import com.example.distributed_lovable.common_lib.enums.ProjectRole;
 import com.example.distributed_lovable.common_lib.error.BadRequestException;
 import com.example.distributed_lovable.common_lib.error.ResourceNotFoundException;
@@ -15,6 +16,7 @@ import com.example.distributed_lovebale.workspace_service.entity.ProjectMemberId
 import com.example.distributed_lovebale.workspace_service.mapper.ProjectMapper;
 import com.example.distributed_lovebale.workspace_service.repository.ProjectMemberRepository;
 import com.example.distributed_lovebale.workspace_service.repository.ProjectRepository;
+import com.example.distributed_lovebale.workspace_service.security.SecurityExpressions;
 import com.example.distributed_lovebale.workspace_service.service.ProjectService;
 import com.example.distributed_lovebale.workspace_service.service.ProjectTemplateService;
 import jakarta.transaction.Transactional;
@@ -39,12 +41,15 @@ public class ProjectServiceImpl implements ProjectService {
     ProjectTemplateService projectTemplateService;
     AuthUtil authUtil;
     AccountClient accountClient;
+    SecurityExpressions securityExpressions;
 
     @Override
     public ProjectResponse createProject(ProjectRequest request) {
 
-        if (!canCreateProject())
-            throw new BadRequestException("User cannot crate a new Project with ");
+        if (!canCreateProject()) {
+            throw new BadRequestException(
+                    "User cannot crate a new Project with current Plan, Upgrade Plan");
+        }
 
         Long ownerId = authUtil.getCurrentUserId();
 
@@ -109,6 +114,11 @@ public class ProjectServiceImpl implements ProjectService {
 
         project.setDeletedAt(Instant.now());
         projectRepository.save(project);
+    }
+
+    @Override
+    public boolean hasPermission(Long projectId, ProjectPermission permission) {
+        return securityExpressions.hasPermission(projectId, permission);
     }
 
     private  Project getAccessbileProjectById(Long projectId, Long userId){

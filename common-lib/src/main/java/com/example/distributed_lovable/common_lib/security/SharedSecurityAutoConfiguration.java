@@ -1,6 +1,7 @@
 package com.example.distributed_lovable.common_lib.security;
 
 import feign.RequestInterceptor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,10 +14,10 @@ public class SharedSecurityAutoConfiguration {
     }
 
     @Bean
-    public JwtAuthFilter jwtAuthFilter(AuthUtil authUtil, HandlerExceptionResolver handlerExceptionResolver) {
+    public JwtAuthFilter jwtAuthFilter(AuthUtil authUtil,
+                                       @Qualifier("handlerExceptionResolver") HandlerExceptionResolver handlerExceptionResolver) {
         return new JwtAuthFilter(authUtil, handlerExceptionResolver);
     }
-
     @Bean
     public RequestInterceptor requestInterceptor() {
         return requestTemplate -> {
