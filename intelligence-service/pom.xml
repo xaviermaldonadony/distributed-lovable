@@ -8,7 +8,7 @@
 		<version>4.1.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example.distributed-lovebale</groupId>
+	<groupId>com.example.distributed-lovable</groupId>
 	<artifactId>intelligence-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
@@ -99,6 +99,10 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok-mapstruct-binding</artifactId>
 			<version>0.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-kafka</artifactId>
 		</dependency>
     </dependencies>
 	<dependencyManagement>
